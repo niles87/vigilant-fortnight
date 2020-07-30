@@ -35,8 +35,4 @@ User.init(
   }
 );
 
-User.prototype.validPassword = (password) => {
-  return bcrypt.compareSync(password, this.password);
-};
-
 module.exports = User;

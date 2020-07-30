@@ -1,1 +1,7 @@
-<h1>Hello World!</h1>
+{{#if loggedIn}}
+<h1>Welcome, {{loggedIn.username}}</h1>
+{{/if}}
+
+<h2>Top Score</h2>
+
+<h3 id="topScore"></h3>
