@@ -20,6 +20,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    score: {
+      type: DataTypes.INT,
+      allowNull:true
+    }
   },
   {
     hooks: {
