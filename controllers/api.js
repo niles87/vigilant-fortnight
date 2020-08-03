@@ -3,10 +3,11 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   login: async function (req, res) {
-    console.log(req.body);
+    
     const { email, password } = req.body;
     try {
-      const user = await User.findOne({ where: { email } });
+      // const user = await User.findOne({ where: { email } });
+      const user = await User.findOne({email})
       if (user === null) {
         res.sendStatus(403);
       } else if (!bcrypt.compareSync(password, user.password)) {
@@ -18,21 +19,36 @@ module.exports = {
     } catch (error) {
       console.log(error.message);
     }
+
   },
   signup: function (req, res) {
-    console.log(req.body);
+    
     const { username, email, password1, password2 } = req.body;
 
     if (password1 !== password2) {
       res.send({ status: 400, msg: "Passwords don't match" });
     } else {
-      User.create({ username, email, password: password1 })
-        .then((user) => {
+      // User.create({ username, email, password: password1 })
+      //   .then((user) => {
+      //     res.render("login", { newUser: true });
+      //   })
+      //   .catch((err) => {
+      //     console.log(err.message);
+      //   });
+      let newUser = new User({
+        username,
+        password: password1,
+        email,
+      });
+  
+      User.addUser(newUser, (err, user) => {
+        if (err) {
+          // console.log(err);
+          res.render('login', {newUser:false});
+        } else {
           res.render("login", { newUser: true });
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
+        }
+      });
     }
   },
 };
