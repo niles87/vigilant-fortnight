@@ -1,43 +1,37 @@
-{{#if newUser}}
-<h2>Thanks for signing up, please login!</h2>
-{{else}}
-<h3>Unable to register</h3>
+{{#if registered}}
+<h2 class="flash-message">{{registered.msg}}</h2>
 {{/if}}
-<p>Login</p>
+{{#if failRegister}}
+<h3 class="login-page-fail flash-message">{{failRegister.msg}}</h3>
+{{/if}}
+{{#if loginFail}}
+<h3 class="login-page-fail flash-message">{{loginFail.msg}}</h3>
+{{/if}}
 
-<form action="api/v1/login" method="post">
-    <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+<div class="form-container">
 
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-    </div>
-    <button type="submit">Login</button>
-</form>
+    <form id="login" action="api/v1/login" method="post">
+        <h3>Login</h3>
 
-<p>Sign Up</p>
+        <input type="email" name="email" id="email" placeholder="Email" aria-placeholder="Email">
 
-<form action="/api/v1/signup" method="post">
-    <div>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
+        <input type="password" name="password" id="password" placeholder="Password" aria-placeholder="Password">
 
-    </div>
-    <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
-    </div>
-    <div>
-        <label for="password1">Password</label>
-        <input type="password" name="password1" id="password1">
-    </div>
-    <div>
-        <label for="password2">Confirm Password</label>
-        <input type="password" name="password2" id="password2">
-    </div>
-    <button type="submit">Sign Up</button>
+        <button type="submit">Login</button>
+    </form>
 
-</form>
+    <form id="signup" action="/api/v1/signup" method="post">
+        <h3>Sign Up</h3>
+
+        <input type="text" name="username" id="username" placeholder="Username" aria-placeholder="Username">
+
+        <input type="email" name="email" id="signUpEmail" placeholder="Email" aria-placeholder="Email">
+
+        <input type="password" name="password1" id="password1" placeholder="Password" aria-placeholder="Password">
+
+        <input type="password" name="password2" id="password2" placeholder="Password" aria-placeholder="Password">
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+</div>
