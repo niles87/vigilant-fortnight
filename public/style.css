@@ -1,0 +1,145 @@
+:root {
+  --m-bg-color: #f2f2f2;
+  --dark-blue: #364559;
+  --blue-grey: #5d768c;
+  --light-blue: #99b1bf;
+  --accent-color: #80a6a6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--m-bg-color);
+}
+
+/* layout */
+#navbar {
+  width: 100%;
+  height: 30px;
+  background: var(--dark-blue);
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "logo center links";
+}
+
+.logo {
+  grid-area: logo;
+  padding: 5px;
+  height: 100%;
+  background-color: var(--dark-blue);
+  color: var(--accent-color);
+}
+
+.center {
+  height: 100%;
+  background-color: var(--dark-blue);
+}
+
+.links {
+  grid-area: links;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  background-color: var(--dark-blue);
+}
+
+.links a {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--accent-color);
+  background-color: var(--dark-blue);
+}
+
+.container {
+  max-width: 960px;
+  min-height: 600px;
+  margin: 10px auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* home */
+.home-title {
+  padding-top: 10px;
+  text-align: center;
+}
+
+#topScore {
+  padding-top: 5px;
+  text-align: center;
+}
+
+/* login */
+.flash-message {
+  animation: flash-message 3s ease-out 5s once;
+  -webkit-animation: flash-message 3s ease-out 5s once;
+}
+
+@keyframes flash-message {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@-webkit-keyframes flash-message {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.login-page-fail {
+  color: #ff4500;
+}
+
+.form-container {
+  min-height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: auto 0;
+}
+
+#login,
+#signup {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#login h3,
+#signup h3 {
+  text-align: center;
+  margin: 5px;
+}
+
+#login input,
+#signup input {
+  margin: 5px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+#login button,
+#signup button {
+  background-color: var(--accent-color);
+  color: var(--m-bg-color);
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+  margin: 0 auto;
+}
