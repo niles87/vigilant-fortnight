@@ -12,5 +12,5 @@ require("dotenv").config();
 
 // module.exports = sequelize;
 module.exports = {
-  database = process.env.DB_STRING
-}
+  database: process.env.DB_STRING,
+};
